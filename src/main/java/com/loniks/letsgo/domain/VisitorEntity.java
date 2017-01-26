@@ -1,10 +1,17 @@
 package com.loniks.letsgo.domain;
 
-import javax.persistence.Entity;
+import lombok.Data;
+
+import javax.persistence.*;
 
 /**
  * @author Bondar Dmytro
  */
+@Data
 @Entity
-public class TicketEntity {
+@Table(name = "visitors")
+public class VisitorEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }
