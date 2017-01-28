@@ -24,6 +24,9 @@ public class EventEntity {
     @Column(name = "description",length = 5000)
     private String description;
 
+    @Column(name = "address",length = 1000)
+    private String address;
+
     @Column(name = "start_date",nullable = false)
     private ZonedDateTime startDate;
 

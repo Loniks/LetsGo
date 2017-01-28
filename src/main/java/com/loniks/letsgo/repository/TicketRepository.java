@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author Bondar Dmytro
  */
 @Repository
-@RepositoryRestResource
+@RepositoryRestResource(path = "tickets")
 public interface TicketRepository extends JpaRepository<TicketEntity,Long> {
 
 }

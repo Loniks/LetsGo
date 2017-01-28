@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author Bondar Dmytro
  */
 @Repository
-@RepositoryRestResource
+@RepositoryRestResource(path = "events")
 public interface EventRepository extends JpaRepository<EventEntity,Long> {
 
 }

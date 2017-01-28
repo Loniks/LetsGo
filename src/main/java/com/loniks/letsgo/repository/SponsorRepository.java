@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * @author Bondar Dmytro
  */
 @Repository
-@RepositoryRestResource
+@RepositoryRestResource(path = "sponsors")
 public interface SponsorRepository extends JpaRepository<SponsorEntity,Long> {
 
 }
