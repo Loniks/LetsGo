@@ -1,4 +1,4 @@
-var letsgo = angular.module('letsgo', ['ui.router','mgcrea.ngStrap']);
+var letsgo = angular.module('letsgo', ['ui.router','mgcrea.ngStrap','ngResource','spring-data-rest']);
 letsgo.config(function($stateProvider) {
     var helloState = {
         name: 'hello',
