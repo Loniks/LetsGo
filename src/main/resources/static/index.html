@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="letsgo">
+<head>
+    <title>Letsgo</title>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/angular-strap.min.js"></script>
+    <script type="text/javascript" src="js/angular-strap.tpl.min.js"></script>
+    <script type="text/javascript" src="js/letsgo.js"></script>
+</head>
+<body>
+<a ui-sref="hello" ui-sref-active="active">Hello</a>
+<a ui-sref="about" ui-sref-active="active">About</a>
+
+<ui-view></ui-view>
+</body>
+</html>
