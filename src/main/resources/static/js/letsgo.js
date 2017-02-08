@@ -1,17 +1,20 @@
-var letsgo = angular.module('letsgo', ['ui.router','mgcrea.ngStrap','ngResource','spring-data-rest']);
-letsgo.config(function($stateProvider) {
+var letsgo = angular.module('letsgo', ['ui.router', 'mgcrea.ngStrap', 'ngResource', 'spring-data-rest']);
+letsgo.config(function ($stateProvider) {
     var helloState = {
         name: 'hello',
         url: '/hello',
-        template: '<h3>hello world!</h3>'
-    }
+        templateUrl: "hello.html"
+    };
 
     var aboutState = {
         name: 'about',
         url: '/about',
-        template: '<h3>Its the UI-Router hello world app!</h3>'
-    }
+        templateUrl: "about.html"
+    };
 
     $stateProvider.state(helloState);
     $stateProvider.state(aboutState);
+});
+letsgo.controller("main", function ($scope) {
+    $scope.name = "User Name";
 });
