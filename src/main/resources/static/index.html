@@ -11,10 +11,11 @@
     <script type="text/javascript" src="js/angular-spring-data-rest.min.js"></script>
     <script type="text/javascript" src="js/letsgo.js"></script>
 </head>
-<body ng-controller="main">
-<a ui-sref="hello" ui-sref-active="active">Hello</a>
-<a ui-sref="about" ui-sref-active="active">About</a>
-
+<body>
+<ul class="nav nav-tabs">
+    <li><a ui-sref="home" ui-sref-active="active">Home</a></li>
+    <li><a ui-sref="about" ui-sref-active="active">About</a></li>
+</ul>
 <ui-view></ui-view>
 </body>
 </html>
