@@ -9,7 +9,7 @@ A simple application that allows users to book the tickets to any events in the 
 3. Build and run the app (`mvnw spring-boot:run -Drun.profiles=local`)
 4. Point you browser to `http://localhost:8080`
 
-## Technologies usedg
+## Technologies used
 
 - [Spring Boot](http://projects.spring.io/spring-boot/)
 - [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
@@ -20,3 +20,4 @@ A simple application that allows users to book the tickets to any events in the 
 - [AngularStrap](http://mgcrea.github.io/angular-strap/)
 - [Maven](https://maven.apache.org/)
 - [JUnit](http://junit.org/)
+- [Gulp](http://gulpjs.com/)
