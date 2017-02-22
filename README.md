@@ -8,8 +8,6 @@ A simple application that allows users to book the tickets to any events in the 
 2. Create database (`CREATE DATABASE  IF NOT EXISTS letsgo;`)
 3. Build and run the app (`mvnw spring-boot:run -Drun.profiles=local`)
 4. Point you browser to `http://localhost:8080`
- 
-![Chart](https://cloud.githubusercontent.com/assets/11942950/8761619/df3ee620-2d62-11e5-8b98-6bf3a495bfa5.jpg)
 
 ## Technologies used
 
