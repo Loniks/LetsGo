@@ -1,5 +1,5 @@
 var letsgo = angular.module('letsgo', ['ui.router', 'mgcrea.ngStrap', 'ngResource', 'spring-data-rest']);
-letsgo.config(function ($stateProvider) {
+letsgo.config(function ($stateProvider, $locationProvider) {
     var aboutState = {
         name: 'about',
         url: '/about',
@@ -122,7 +122,7 @@ letsgo.config(function ($stateProvider) {
         url: '/ticket/view',
         templateUrl: "viewTicket.html"
     };
-
+    $locationProvider.html5Mode(true);
     $stateProvider.state(viewTicketState);
 });
 
