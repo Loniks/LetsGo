@@ -9,7 +9,7 @@ A simple application that allows users to book the tickets to any events in the 
 3. Build and run the app (`mvnw spring-boot:run -Drun.profiles=local`)
 4. Point you browser to `http://localhost:8080`
 
-## Technologies used
+## Technologies usedg
 
 - [Spring Boot](http://projects.spring.io/spring-boot/)
 - [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
