@@ -39,6 +39,9 @@ public class EventEntity {
     @Column(name = "number_of_free_places")
     private Integer numberOfFreePlaces;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "owner")
     private SponsorEntity owner;
