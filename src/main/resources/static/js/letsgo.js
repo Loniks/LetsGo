@@ -122,7 +122,8 @@ letsgo.config(function ($stateProvider, $locationProvider) {
         url: '/ticket/view',
         templateUrl: "viewTicket.html"
     };
-    $locationProvider.html5Mode(true);
+/*    $locationProvider.html5Mode(true);*/
+
     $stateProvider.state(viewTicketState);
 });
 
