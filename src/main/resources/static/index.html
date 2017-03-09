@@ -1,23 +1,62 @@
-<!DOCTYPE html>
-<html ng-app="letsgo">
+<!doctype html>
+<html ng-app="loginApp">
 <head>
-    <title>Letsgo</title>
-    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"/>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="js/angular-strap.min.js"></script>
-    <script type="text/javascript" src="js/angular-strap.tpl.min.js"></script>
-    <script type="text/javascript" src="js/angular-resource.min.js"></script>
-    <script type="text/javascript" src="js/angular-spring-data-rest.min.js"></script>
-    <script type="text/javascript" src="js/letsgo.js"></script>
-<!--     <base href="/"> -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.min.js"></script>
+<title>Login App</title>
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<ul class="nav nav-tabs">
-    <li><a ui-sref="home" ui-sref-active="active">Home</a></li>
-    <li><a ui-sref="addEvent" ui-sref-active="active">addEvent</a></li>
-    <li><a ui-sref="about" ui-sref-active="active">About</a></li>
-</ul>
-<ui-view></ui-view>
+<body ng-controller="ParentController">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Project</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+					<li ng-if="isAuthorized(userRoles.guest)" ng-class="getClass('manageTickets')"><a ui-sref="manageTickets">Manage Tickets</a></li>
+					<li ng-if="isAuthorized(userRoles.admin)" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a></li>
+					<li ng-if="isAuthorized(userRoles.owner)"  ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" ng-click="logout()">Log Out</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	
+	<div class="container">
+		<div ng-if="currentUser"><b>Welcome, {{ currentUser.username }}</b></div>
+		<div ui-view></div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+	<script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/routing.js"></script>
+	<script src="js/globalFunctions.js"></script>
+
+	<!--FACTORY -->
+	<script src="js/authInterceptor.js"></script>
+	
+
+	<!--CONTROLLERS -->
+	<script src="js/parentController.js"></script>
+	<script src="js/login.js"></script>
+
+	<!--SERVICES -->
+	<script src="js/auth.js"></script>
+	<script src="js/session.js"></script>
+
 </body>
 </html>
