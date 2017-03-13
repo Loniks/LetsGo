@@ -20,9 +20,16 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 
-					<li ng-if="isAuthorized(userRoles.guest)" ng-class="getClass('manageTickets')"><a ui-sref="manageTickets">Manage Tickets</a></li>
-					<li ng-if="isAuthorized(userRoles.admin)" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a></li>
-					<li ng-if="isAuthorized(userRoles.owner)"  ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a></li>
+					<li ng-if="credentials.userRole == 'guest'" ng-class="getClass('manageTickets')"><a ui-sref="manageTickets">Manage Tickets</a>
+					{{credentials.userRole}}
+					</li>
+					<li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a>
+					{{credentials.userRole}}
+					</li>
+					<li  ng-if="credentials.userRole == 'owner'" ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a>
+					{{credentials.userRole}}
+					</li>
+
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" ng-click="logout()">Log Out</a></li>
@@ -34,7 +41,6 @@
 	</nav>
 	
 	<div class="container">
-		<div ng-if="currentUser"><b>Welcome, {{ currentUser.username }}</b></div>
 		<div ui-view></div>
 	</div>
 

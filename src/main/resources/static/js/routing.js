@@ -10,8 +10,9 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 url: "/",
                 templateUrl: "home.html",
                 data: {
-                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.owner]
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.owner, USER_ROLES.guest]
                 }
+
             })
             .state('state1', {
                 url: "/state1",
@@ -45,7 +46,7 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 url: "/manageTickets",
                 templateUrl: "manageTickets.html",
                 data: {
-                    authorizedRoles: [USER_ROLES.admin]
+                    authorizedRoles: [USER_ROLES.guest]
                 }
             });
     }
