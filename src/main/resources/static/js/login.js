@@ -21,6 +21,7 @@ function($scope, $state, $modalInstance, $window, Auth ) {
 	//Performs the login function, by sending a request to the server with the Auth service
 	$scope.login = function(credentials) {
 		$scope.error = false;
+		$window.location.reload();
 		Auth.login(credentials, function(user) {
 			//success function
 			$modalInstance.close();
@@ -36,6 +37,7 @@ function($scope, $state, $modalInstance, $window, Auth ) {
 	if ($window.sessionStorage["userInfo"]) {
 		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
 		$scope.login(credentials);
+		
 	}
 
 } ]);
