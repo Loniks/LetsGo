@@ -1,66 +1,69 @@
 <!doctype html>
 <html ng-app="loginApp">
+
 <head>
-<title>LetsGo</title>
-<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <title>LetsGo</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 </head>
+
 <body ng-controller="ParentController">
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-
-					<li ng-if="credentials.userRole == 'visitor'" ng-class="getClass('manageTickets')"><a ui-sref="manageTickets">Manage Tickets</a>
-					</li>
-					<li ng-if="credentials.userRole == 'visitor'" ng-class="getClass('searchEvent')"><a ui-sref="searchEvent">Search Event</a>
-					</li>
-					<li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a>
-					</li>
-					<li  ng-if="credentials.userRole == 'owner'" ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a>
-					</li>
-
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" ng-click="logout()">Log Out</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	
-	<div class="container">
-		<div ui-view></div>
-	</div>
-	<script src="libs/angular/angular.min.js"></script>
-	<script src="libs/jquery/dist/jquery.min.js"></script>
-	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/routing.js"></script>
-	<script src="js/globalFunctions.js"></script>
-
-	<!--FACTORY -->
-	<script src="js/authInterceptor.js"></script>
-	
-
-	<!--CONTROLLERS -->
-	<script src="js/parentController.js"></script>
-	<script src="js/login.js"></script>
-
-	<!--SERVICES -->
-	<script src="js/auth.js"></script>
-	<script src="js/session.js"></script>
-
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Project</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-if="credentials.userRole == 'visitor'" ng-class="getClass('manageTickets')"><a ui-sref="manageTickets">Manage Tickets</a>
+                    </li>
+                    <li ng-if="credentials.userRole == 'visitor'" ng-class="getClass('searchEvent')"><a ui-sref="searchEvent">Search Event</a>
+                    </li>
+                    <li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a>
+                    </li>
+                    <li ng-if="credentials.userRole == 'owner'" ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a>
+                    </li>
+                    <li ng-if="!credentials.userRole" >
+                        <a ng-click="logout()">Log in as visitor/owner</a>
+                    </li>
+                    <li ng-if="!credentials.userRole">
+                        <a href="">Register as visitor</a>
+                    </li>
+                    <li ng-if="!credentials.userRole">
+                        <a href="">Register as owner</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if="credentials.userRole"><a href="#" ng-click="logout()">Log Out</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/routing.js"></script>
+    <script src="js/globalFunctions.js"></script>
+    <!--FACTORY -->
+    <script src="js/authInterceptor.js"></script>
+    <!--CONTROLLERS -->
+    <script src="js/parentController.js"></script>
+    <script src="js/login.js"></script>
+    <!--SERVICES -->
+    <script src="js/auth.js"></script>
+    <script src="js/session.js"></script>
 </body>
+
 </html>
