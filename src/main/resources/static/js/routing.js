@@ -10,7 +10,7 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 url: "/",
                 templateUrl: "home.html",
                 data: {
-                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.owner, USER_ROLES.guest]
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.owner, USER_ROLES.visitor]
                 }
 
             })
@@ -42,11 +42,18 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                     authorizedRoles: [USER_ROLES.admin]
                 }
             })
+            .state('searchEvent', {
+                url: "/searchEvent",
+                templateUrl: "searchEvent.html",
+                data: {
+                    authorizedRoles: [USER_ROLES.visitor]
+                }
+            })
             .state('manageTickets', {
                 url: "/manageTickets",
                 templateUrl: "manageTickets.html",
                 data: {
-                    authorizedRoles: [USER_ROLES.guest]
+                    authorizedRoles: [USER_ROLES.visitor]
                 }
             });
     }
