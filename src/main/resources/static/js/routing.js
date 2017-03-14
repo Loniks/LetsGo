@@ -2,7 +2,7 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
     function($stateProvider, $urlRouterProvider, USER_ROLES) {
 
         // For any unmatched url, redirect to /
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/guest");
 
         // Now set up the states
         $stateProvider
@@ -14,12 +14,9 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 }
 
             })
-            .state('state1', {
-                url: "/state1",
-                templateUrl: "state1.html",
-                data: {
-                    authorizedRoles: [USER_ROLES.admin]
-                }
+            .state('guest', {
+                url: "/guest",
+                templateUrl: "guest.html"
             })
             .state('state2', {
                 url: "/state2",
