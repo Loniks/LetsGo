@@ -1,0 +1,44 @@
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  background: url(../img/background1.png) repeat; }
+
+.logo {
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100px;
+  text-align: center; }
+
+.input2::-webkit-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 1.9s ease; }
+
+.input2::-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 1.9s ease; }
+
+.input2:-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 1.9s ease; }
+
+.input2:-ms-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 1.9s ease; }
+
+.input2:focus::-webkit-input-placeholder {
+  text-indent: 2000px;
+  transition: text-indent 1.9s ease; }
+
+.input2:focus::-moz-placeholder {
+  text-indent: 2000px;
+  transition: text-indent 1.9s ease; }
+
+.input2:focus:-moz-placeholder {
+  text-indent: 2000px;
+  transition: text-indent 1.9s ease; }
+
+.input2:focus:-ms-input-placeholder {
+  text-indent: 2000px;
+  transition: text-indent 1.9s ease; }
