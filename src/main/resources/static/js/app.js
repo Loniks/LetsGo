@@ -7,7 +7,7 @@ var loginApp = angular.module('loginApp', ['ui.router', 'ui.bootstrap'])
 	all : '*',
 	admin : 'admin',
 	owner : 'owner',
-	guest : 'guest'
+	guest : 'visitor'
 }).constant('AUTH_EVENTS', {
 	loginSuccess : 'auth-login-success',
 	loginFailed : 'auth-login-failed',

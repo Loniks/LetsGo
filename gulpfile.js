@@ -24,3 +24,5 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
     gulp.watch('src/main/resources/static/**/*.html', browserSync.reload);
     gulp.watch('src/main/resources/static/js/**/*.js', browserSync.reload);
 })
+
+gulp.task('default', ['watch']);

@@ -12,10 +12,10 @@ var usersJson = {
             "password": "owner",
             "userRole": "owner"
         },
-        "guest": {
-            "username": "guest",
-            "password": "guest",
-            "userRole": "guest"
+        "visitor": {
+            "username": "visitor",
+            "password": "visitor",
+            "userRole": "visitor"
         }
     }
 };
