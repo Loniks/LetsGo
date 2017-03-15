@@ -10,7 +10,7 @@ angular.module('loginApp').run(function($rootScope, $window, $state, Auth, AUTH_
 
         var authorizedRoles = next.data.authorizedRoles;
 
-        if (!Auth.isAuthorized(authorizedRoles) && !$window.sessionStorage["userInfo"]) {
+        if (authorizedRoles && !Auth.isAuthorized(authorizedRoles) && !$window.sessionStorage["userInfo"]) {
             event.preventDefault();
             if (Auth.isAuthenticated()) {
                 // user is not allowed
