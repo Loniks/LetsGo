@@ -14,9 +14,15 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 }
 
             })
+            .state('loginTest', {
+                url: "/loginTest",
+                templateUrl: "loginTest.html"
+            })
             .state('guest', {
                 url: "/guest",
-                templateUrl: "guest.html"
+                templateUrl: "guest.html",
+                data: {
+                }
             })
             .state('state2', {
                 url: "/state2",

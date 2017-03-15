@@ -30,7 +30,7 @@
                     <li ng-if="credentials.userRole == 'owner'" ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a>
                     </li>
                     <li ng-if="!credentials.userRole" >
-                        <a ng-click="logout()">Log in as visitor/owner</a>
+                        <a ng-click="logout()" href="">Log in as visitor/owner</a>
                     </li>
                     <li ng-if="!credentials.userRole">
                         <a href="">Register as visitor</a>

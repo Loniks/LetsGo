@@ -3,13 +3,18 @@ html {
   min-height: 100%; }
 
 body {
-  background: url(../img/background1.png) repeat; }
+  background: url(../img/background1.png) repeat;
+  color: white; }
+
+.modal-dialog {
+  color: black; }
 
 .logo {
   display: block;
   font-family: 'Open Sans', sans-serif;
   font-size: 100px;
-  text-align: center; }
+  text-align: center;
+  color: white; }
 
 .input2::-webkit-input-placeholder {
   text-indent: 0px;
