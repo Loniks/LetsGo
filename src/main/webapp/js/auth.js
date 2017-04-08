@@ -3,8 +3,8 @@
 var usersJson = {
     "users": {
         "admin": {
-            "username": "admin",
-            "password": "admin",
+            "username": "supper@test.com",
+            "password": "supper",
             "userRole": "admin"
         },
         "owner": {
@@ -28,38 +28,34 @@ angular.module('loginApp')
             //the login function
             authService.login = function(user, success, error) {
                 //$http.post('users.json').success(function(data) {
-                var data = usersJson;
-                //this is my dummy technique, normally here the 
-                //user is returned with his data from the db
-                var users = data.users;
-                if (users[user.username]) {
-                    var loginData = users[user.username];
-                    //insert your custom login function here 
-                    if (user.username == loginData.username && user.password == loginData.username) {
-                        //set the browser session, to avoid relogin on refresh
-                        $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
-                        //delete password not to be seen clientside 
-                        delete loginData.password;
+                $http.get("api/admins/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.username,
+                            "password": user.password
+                        }
+                    }).then(function (successResult){
+                    alert("ok");
 
+                    var loginData = successResult.data;
 
-                        //update current user into the Session service or $rootScope.currentUser
-                        //whatever you prefer
-                        Session.create(loginData);
-                        //or
-                        $rootScope.currentUser = loginData;
+                    loginData.userRole = "admin";
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+                    //delete password not to be seen clientside
+                    delete loginData.password;
 
-                        //fire event of successful login
-                        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                        //run success function
-                        success(loginData);
-                    } else {
-                        //OR ELSE
-                        //unsuccessful login, fire login failed event for 
-                        //the according functions to run
-                        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-                        error();
-                    }
-                }
+                    $rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    success(loginData);
+
+                },function (errorResult){
+                    alert("bad");
+                    $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+                    error();
+                });
             };
 
             //check if the user is authenticated
@@ -76,7 +72,7 @@ angular.module('loginApp')
                     authorizedRoles = [authorizedRoles];
                 }
                 return (authService.isAuthenticated() &&
-                    authorizedRoles.indexOf(Session.userRole) !== -1);
+                authorizedRoles.indexOf(Session.userRole) !== -1);
             };
 
             //log out the user and broadcast the logoutSuccess event
