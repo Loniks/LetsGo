@@ -44,7 +44,8 @@ angular.module('loginApp')
                     //delete password not to be seen clientside
                     delete loginData.password;
 
-                    $rootScope.currentUser = loginData;
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
 
                     //fire event of successful login
                     $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
