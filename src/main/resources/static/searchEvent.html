@@ -1,2 +1,17 @@
-<label for="">Search Event</label>
-<input type="search" class="form-control">
+<div class="form-group">
+    <label for="">Search Event</label>
+    <input type="search" class="form-control">
+    <span style="margin-top: 10px"/>
+    <ul class="list-group">
+        <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
+            ng-repeat="event in events">
+            <div class="panel-heading">{{event.name}}</div>
+            <div class="panel-body">
+                <p class="text-warning">{{event.description}}</p>
+                <span class="badge">{{event.status}}</span>
+                <button class="btn btn-info" ng-click="createTicket(event)">Make a ticket</button>
+                <button class="btn btn-warning" ng-click="about(event)">Details</button>
+            </div>
+        </li>
+    </ul>
+</div>

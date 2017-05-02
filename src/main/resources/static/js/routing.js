@@ -1,8 +1,8 @@
 angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
-    function($stateProvider, $urlRouterProvider, USER_ROLES) {
+    function ($stateProvider, $urlRouterProvider, USER_ROLES) {
 
         // For any unmatched url, redirect to /
-        $urlRouterProvider.otherwise("/guest");
+        $urlRouterProvider.otherwise("/");
 
         // Now set up the states
         $stateProvider
@@ -14,19 +14,22 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 }
 
             })
-            .state('loginTest', {
-                url: "/loginTest",
-                templateUrl: "loginTest.html"
+            .state('registerVisitor', {
+                url: "/registerVisitor",
+                templateUrl: "registerVisitor.html"
+            })
+            .state('registerOwner', {
+                url: "/registerOwner",
+                templateUrl: "registerOwner.html"
             })
             .state('guest', {
                 url: "/guest",
                 templateUrl: "guest.html",
-                data: {
-                }
+                data: {}
             })
-            .state('state2', {
-                url: "/state2",
-                templateUrl: "state2.html",
+            .state('addAdmin', {
+                url: "/addAdmin",
+                templateUrl: "addAdmin.html",
                 data: {
                     authorizedRoles: [USER_ROLES.admin]
                 }
@@ -38,6 +41,20 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                     authorizedRoles: [USER_ROLES.owner]
                 }
             })
+            .state('addEvent', {
+                url: "/addEvent",
+                templateUrl: "addEvent.html",
+                data: {
+                    authorizedRoles: [USER_ROLES.owner]
+                }
+            })
+            .state('viewEvent', {
+                url: "/viewEvent",
+                templateUrl: "viewEvent.html",
+                data: {
+                    authorizedRoles: [USER_ROLES.owner]
+                }
+            })
             .state('manageOwners', {
                 url: "/manageOwners",
                 templateUrl: "manageOwners.html",
@@ -45,12 +62,23 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                     authorizedRoles: [USER_ROLES.admin]
                 }
             })
+            .state('manageVisitors', {
+                url: "/manageVisitors",
+                templateUrl: "manageVisitors.html",
+                data: {
+                    authorizedRoles: [USER_ROLES.admin]
+                }
+            })
+            .state('manageAdmins', {
+                url: "/manageAdmins",
+                templateUrl: "manageAdmins.html",
+                data: {
+                    authorizedRoles: [USER_ROLES.admin]
+                }
+            })
             .state('searchEvent', {
                 url: "/searchEvent",
                 templateUrl: "searchEvent.html",
-                data: {
-                    authorizedRoles: [USER_ROLES.visitor]
-                }
             })
             .state('manageTickets', {
                 url: "/manageTickets",

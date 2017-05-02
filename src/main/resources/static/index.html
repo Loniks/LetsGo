@@ -3,8 +3,8 @@
 
 <head>
     <title>LetsGo</title>
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link href="css/Open%20Sans%20Fonts.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -16,7 +16,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Project</a>
+                <a class="navbar-brand">Letsgo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,7 +25,11 @@
                     </li>
                     <li ng-if="credentials.userRole == 'visitor'" ng-class="getClass('searchEvent')"><a ui-sref="searchEvent">Search Event</a>
                     </li>
-                    <li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owner</a>
+                    <li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageOwners')"><a ui-sref="manageOwners">Manage Owners</a>
+                    </li>
+                    <li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageAdmins')"><a ui-sref="manageAdmins">Manage Admins</a>
+                    </li>
+                    <li ng-if="credentials.userRole == 'admin'" ng-class="getClass('manageVisitors')"><a ui-sref="manageVisitors">Manage Visitors</a>
                     </li>
                     <li ng-if="credentials.userRole == 'owner'" ng-class="getClass('manageEvents')"><a ui-sref="manageEvents">Manage Events</a>
                     </li>
@@ -33,10 +37,10 @@
                         <a ng-click="logout()" href="">Log in as visitor/owner</a>
                     </li>
                     <li ng-if="!credentials.userRole">
-                        <a href="">Register as visitor</a>
+                        <a ui-sref="registerVisitor">Register as visitor</a>
                     </li>
                     <li ng-if="!credentials.userRole">
-                        <a href="">Register as owner</a>
+                        <a ui-sref="registerOwner">Register as owner</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -52,7 +56,7 @@
     </div>
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
-    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>-->
     <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
     <script src="js/app.js"></script>
