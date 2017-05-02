@@ -9,6 +9,7 @@ import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.exceptions.InvalidFormatException;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
@@ -67,6 +68,7 @@ public class TicketServiceImplTest {
     }
 
     @Test
+    @Ignore
     public void testMakeDocumentSuccessfully() throws Exception {
         File file = ticketService.makeDocument(getValidTicket());
         Assert.assertNotNull(file);
