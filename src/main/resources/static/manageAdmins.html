@@ -1,0 +1,17 @@
+<div class="form-group">
+    <h3>Its the manageAdmins page!!!</h3>
+    <button class="btn btn-primary" ui-sref="addAdmin">Add new admin</button>
+    <span style="margin-top: 10px"/>
+    <ul class="list-group">
+        <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
+            ng-repeat="admin in admins">
+            <div class="panel-heading">{{admin.name}}</div>
+            <div class="panel-body">
+                <p class="text-warning">{{admin.email}}</p>
+                <span class="badge">{{admin.status}}</span>
+                <button class="btn btn-warning" ng-click="changeStatus(admin)">Change status</button>
+                <button class="btn btn-danger" ng-click="deleteAdmin(admin)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>

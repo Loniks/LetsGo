@@ -1,4 +1,18 @@
-<div>
-	
-	manage eventsssssssssssss!!!!!!!!!1111
+<div class="form-group">
+	<h3>Its the manageEvents page!</h3>
+	<button class="btn btn-primary" ui-sref="addEvent">Add new event</button>
+	<span style="margin-top: 10px"/>
+	<ul class="list-group">
+		<li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
+			ng-repeat="event in events">
+			<div class="panel-heading">{{event.name}}</div>
+			<div class="panel-body">
+				<p class="text-warning">{{event.email}}</p>
+				<span class="badge">{{event.status}}</span>
+				<button class="btn btn-info" ui-sref="viewEvent">Details</button>
+				<button class="btn btn-warning" ng-click="changeStatus(event)">Change status</button>
+				<button class="btn btn-danger" ng-click="deleteEvent(event)">Delete</button>
+			</div>
+		</li>
+	</ul>
 </div>

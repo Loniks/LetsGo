@@ -1,1 +1,19 @@
-<h3>Its the manageOwners page!</h3>
+
+<div class="form-group">
+    <h3>Its the manageOwners page!</h3>
+    <span style="margin-top: 10px"/>
+    <ul class="list-group">
+        <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
+            ng-repeat="owner in owners">
+            <div class="panel-heading">{{owner.name}}</div>
+            <div class="panel-body">
+                <p class="text-warning">Email: {{owner.email}}</p>
+                <p class="text-warning">Contact Person: {{owner.contactPerson}}</p>
+                <p class="text-warning">Phone: {{owner.phone}}</p>
+                <span class="badge">{{owner.status}}</span>
+                <button class="btn btn-warning" ng-click="changeStatus(owner)">Change status</button>
+                <button class="btn btn-danger" ng-click="deleteOwner(owner)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>

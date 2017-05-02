@@ -1,0 +1,16 @@
+<div class="form-group">
+    <h3>Its the manageVisitors page!</h3>
+    <span style="margin-top: 10px"/>
+    <ul class="list-group">
+        <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
+            ng-repeat="visitor in visitors">
+            <div class="panel-heading">{{visitor.name}}</div>
+            <div class="panel-body">
+                <p class="text-warning">{{visitor.email}}</p>
+                <span class="badge">{{visitor.status}}</span>
+                <button class="btn btn-warning" ng-click="changeStatus(visitor)">Change status</button>
+                <button class="btn btn-danger" ng-click="deleteVisitor(visitor)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
