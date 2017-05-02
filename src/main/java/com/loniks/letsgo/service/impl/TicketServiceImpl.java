@@ -20,6 +20,7 @@ import java.io.IOException;
 public class TicketServiceImpl implements TicketService {
     @Override
     public File makeDocument(TicketEntity ticketEntity) throws IOException {
+        if(ticketEntity ==null || ticketEntity.getEvent() == null) throw new IllegalArgumentException("TicketEntity cannot be null");
         final File generated = File.createTempFile(String.format("Ticket_%s",ticketEntity.getId()), ".docx");
         WordprocessingMLPackage wordMLPackage = null;
         try {
@@ -38,7 +39,7 @@ public class TicketServiceImpl implements TicketService {
         mdp.addParagraphOfText(String.format("Location: %s",ticketEntity.getEvent().getAddress()));
         mdp.addObject(factory.createBr());
         mdp.addObject(factory.createBr());
-        mdp.addParagraphOfText(String.format("Duration: %s hours",ticketEntity.getEvent().getDuration().toHours()));
+        mdp.addParagraphOfText(String.format("Duration: %s hours",ticketEntity.getEvent().getDuration()));
         try {
             wordMLPackage.save(generated);
         } catch (Docx4JException e) {

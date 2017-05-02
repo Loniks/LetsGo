@@ -24,7 +24,7 @@ public class DownloadTicketController {
     @Autowired
     private TicketRepository ticketRepository;
 
-    @RequestMapping("/api/tickets/download/{id}")
+        @RequestMapping("/api/tickets/download/{id}")
     public void downloadPDFResource(HttpServletResponse response,
                                     @PathVariable("id") Long id) throws IOException {
         TicketEntity ticketEntity = ticketRepository.findOne(id);
