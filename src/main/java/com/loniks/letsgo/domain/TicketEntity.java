@@ -1,6 +1,8 @@
 package com.loniks.letsgo.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +12,8 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "tickets")
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

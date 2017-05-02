@@ -3,9 +3,7 @@ package com.loniks.letsgo.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.Duration;
-import java.time.ZonedDateTime;
-import java.util.Set;
+import java.util.Date;
 
 /**
  * @author Bondar Dmytro
@@ -28,10 +26,10 @@ public class EventEntity {
     private String address;
 
     @Column(name = "start_date",nullable = false)
-    private ZonedDateTime startDate;
+    private Date startDate;
 
     @Column(name = "duration")
-    private Duration duration;
+    private String duration;
 
     @Column(name = "number_of_tickets", nullable = false)
     private Integer numberOfTickets;
