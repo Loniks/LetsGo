@@ -22,12 +22,12 @@
 					<span class="input-group-addon"><i
 							class="glyphicon glyphicon-user"></i></span> <input type="text"
 																				class="form-control" name="username"
-																				ng-model="credentials.username" placeholder="Username"
+																				ng-model="credentials.email" placeholder="email"
 																				required />
 				</div>
 				<div class="error"
-					 ng-show="(submitted  || loginForm.username.$dirty)  && loginForm.username.$invalid">
-					<p class="error" ng-show="loginForm.username.$error.required">'Username'
+					 ng-show="(submitted  || loginForm.email.$dirty)  && loginForm.email.$invalid">
+					<p class="error" ng-show="loginForm.email.$error.required">'email'
 						is mandatory</p>
 				</div>
 				<div style="margin-top: 25px" class="input-group">

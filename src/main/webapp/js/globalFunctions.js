@@ -1,7 +1,7 @@
 /**
  * Contains functions that are added to the root AngularJs scope.
  */
-angular.module('loginApp').run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
+angular.module('letsgo').run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
 
     //before each state change, check if the user is logged in
     //and authorized to move onto the next state

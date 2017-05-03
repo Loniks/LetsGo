@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('loginApp')
+angular.module('letsgo')
     .controller('manageAdmins', function ($scope, $http, user, $window, Auth) {
         $scope.admins = null;
         findAllAdmins();

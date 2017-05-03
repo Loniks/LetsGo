@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginApp')
+angular.module('letsgo')
     .controller('LoginCtrl', ['$scope', '$state', '$modalInstance', '$window', 'Auth',
         function($scope, $state, $modalInstance, $window, Auth) {
             $scope.credentials = {};
