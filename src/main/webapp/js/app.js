@@ -1,13 +1,14 @@
 'use strict';
 
 // Configure the main application module.
-var loginApp = angular.module('loginApp', ['ui.router', 'ui.bootstrap'])
+var letsgo = angular.module('letsgo', ['ui.router', 'ui.bootstrap'])
 /*Constants regarding user login defined here*/
 .constant('USER_ROLES', {
 	all : '*',
 	admin : 'admin',
 	owner : 'owner',
-	guest : 'visitor'
+	visitor : 'visitor',
+	guest : 'guest'
 }).constant('AUTH_EVENTS', {
 	loginSuccess : 'auth-login-success',
 	loginFailed : 'auth-login-failed',

@@ -1,17 +1,21 @@
 <div ng-controller="registerVisitor">
-    <div ng-show="error" class="alert alert-danger">Incorrect registration data</div>
+    <div ng-show="error" class="alert alert-danger">Incorrect registration</div>
     <form ng-submit="register()">
         <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" ng-model="name"/>
+            <input required="true"  type="text" class="form-control" ng-model="name"/>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" ng-model="email"/>
+            <input required="true" type="email" class="form-control" ng-model="email"/>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" ng-model="password"/>
+            <input required="true" type="password" class="form-control" ng-model="password"/>
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input minlength="7" maxlength="10" type="text" class="form-control" ng-model="phone"/>
         </div>
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Register</button>

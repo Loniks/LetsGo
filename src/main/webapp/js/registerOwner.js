@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('letsgo')
-    .controller('registerVisitor', function ($scope, $http, Auth, $state) {
+    .controller('registerOwner', function ($scope, $http, Auth, $state) {
         $scope.error = false;
         $scope.register = function register() {
-            $http.post('api/visitors', {
+            $http.post('api/sponsors', {
                 "name": $scope.name,
                 "email": $scope.email,
                 "password": $scope.password,
                 "phone": $scope.phone,
+                "contactPerson": $scope.person,
                 "status" : "enable"
             })
             .then(function (successResult){

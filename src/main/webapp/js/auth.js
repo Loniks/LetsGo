@@ -1,86 +1,210 @@
 'use strict';
 
-var usersJson = {
-    "users": {
-        "admin": {
-            "username": "admin",
-            "password": "admin",
-            "userRole": "admin"
-        },
-        "owner": {
-            "username": "owner",
-            "password": "owner",
-            "userRole": "owner"
-        },
-        "visitor": {
-            "username": "visitor",
-            "password": "visitor",
-            "userRole": "visitor"
-        }
-    }
-};
-
-angular.module('loginApp')
+angular.module('letsgo')
     .factory('Auth', ['$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS',
-        function($http, $rootScope, $window, Session, AUTH_EVENTS) {
+        function ($http, $rootScope, $window, Session, AUTH_EVENTS) {
             var authService = {};
 
             //the login function
-            authService.login = function(user, success, error) {
-                //$http.post('users.json').success(function(data) {
-                var data = usersJson;
-                //this is my dummy technique, normally here the
-                //user is returned with his data from the db
-                var users = data.users;
-                if (users[user.username]) {
-                    var loginData = users[user.username];
-                    //insert your custom login function here
-                    if (user.username == loginData.username && user.password == loginData.username) {
-                        //set the browser session, to avoid relogin on refresh
-                        $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+            authService.login = function (user, success, error) {
+                console.log(user);
+                var result = new Array();
+                $http.get("api/admins/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.email,
+                            "password": user.password
+                        }
+                    }).then(function (successResult) {
+                    var loginData = successResult.data;
+                    loginData.userRole = "admin";
+
+                    //delete password not to be seen clientside
+                    delete loginData.password;
+
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    result[0] = false;
+                    success(loginData);
+                }, function (errorResult) {
+                    result[0] = true;
+                }).then($http.get("api/sponsors/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.email,
+                            "password": user.password
+                        }
+                    }).then(function (successResult) {
+
+                    var loginData = successResult.data;
+
+                    loginData.userRole = "owner";
+                    //delete password not to be seen clientside
+                    delete loginData.password;
+
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    result[1] = false;
+                    success(loginData);
+
+                }, function (errorResult) {
+
+                    result[1] = true;
+
+                })).then(
+                    $http.get("api/visitors/search/findOneByEmailAndPassword",
+                        {
+                            "params": {
+                                "email": user.email,
+                                "password": user.password
+                            }
+                        }).then(function (successResult) {
+                        var loginData = successResult.data;
+
+                        loginData.userRole = "visitor";
                         //delete password not to be seen clientside
                         delete loginData.password;
 
+                        $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
 
-                        //update current user into the Session service or $rootScope.currentUser
-                        //whatever you prefer
                         Session.create(loginData);
-                        //or
-                        $rootScope.currentUser = loginData;
+                        //$rootScope.currentUser = loginData;
 
                         //fire event of successful login
                         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
                         //run success function
+                        result[2] = false;
                         success(loginData);
-                    } else {
-                        //OR ELSE
-                        //unsuccessful login, fire login failed event for
-                        //the according functions to run
-                        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-                        error();
-                    }
+                    }, function (errorResult) {
+                        result[2] = true;
+                    }));
+                /*$http.get("api/admins/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.email,
+                            "password": user.password
+                        }
+                    }).then(function (successResult) {
+                    console.log("ok owner");
+
+                    var loginData = successResult.data;
+                    loginData.userRole = "admin";
+
+                    //delete password not to be seen clientside
+                    delete loginData.password;
+
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    result[0] = false;
+                    success(loginData);
+
+                }, function (errorResult) {
+                    console.log(errorResult);
+                    result[0] = true;
+                });
+                $http.get("api/sponsors/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.email,
+                            "password": user.password
+                        }
+                    }).then(function (successResult) {
+                    console.log("ok owner");
+
+                    var loginData = successResult.data;
+
+                    loginData.userRole = "owner";
+                    //delete password not to be seen clientside
+                    delete loginData.password;
+
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    result[1] = false;
+                    success(loginData);
+
+                }, function (errorResult) {
+                    console.log(errorResult);
+                    result[1] = true;
+
+                });
+                $http.get("api/visitors/search/findOneByEmailAndPassword",
+                    {
+                        "params": {
+                            "email": user.email,
+                            "password": user.password
+                        }
+                    }).then(function (successResult) {
+                    console.log("ok visitor");
+
+                    var loginData = successResult.data;
+
+                    loginData.userRole = "visitor";
+                    //delete password not to be seen clientside
+                    delete loginData.password;
+
+                    $window.sessionStorage["userInfo"] = JSON.stringify(loginData);
+
+                    Session.create(loginData);
+                    //$rootScope.currentUser = loginData;
+
+                    //fire event of successful login
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    //run success function
+                    result[2] = false;
+                    success(loginData);
+
+                }, function (errorResult) {
+                    console.log(errorResult);
+                    result[2] = true;
+                });*/
+                if(result[0] || result[1] || result[2]){
+                    $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+                    error();
                 }
             };
 
             //check if the user is authenticated
-            authService.isAuthenticated = function() {
+            authService.isAuthenticated = function () {
                 return !!Session.user;
-
             };
 
             //check if the user is authorized to access the next route
             //this function can be also used on element level
             //e.g. <p ng-if="isAuthorized(authorizedRoles)">show this only to admins</p>
-            authService.isAuthorized = function(authorizedRoles) {
+            authService.isAuthorized = function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
                     authorizedRoles = [authorizedRoles];
                 }
                 return (authService.isAuthenticated() &&
-                    authorizedRoles.indexOf(Session.userRole) !== -1);
+                authorizedRoles.indexOf(Session.userRole) !== -1);
             };
 
             //log out the user and broadcast the logoutSuccess event
-            authService.logout = function() {
+            authService.logout = function () {
 
                 Session.destroy();
                 $window.sessionStorage.removeItem("userInfo");

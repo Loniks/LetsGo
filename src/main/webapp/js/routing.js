@@ -1,4 +1,4 @@
-angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
+angular.module('letsgo').config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
     function ($stateProvider, $urlRouterProvider, USER_ROLES) {
 
         // For any unmatched url, redirect to /
@@ -12,7 +12,6 @@ angular.module('loginApp').config(['$stateProvider', '$urlRouterProvider', 'USER
                 data: {
                     authorizedRoles: [USER_ROLES.admin, USER_ROLES.owner, USER_ROLES.visitor]
                 }
-
             })
             .state('registerVisitor', {
                 url: "/registerVisitor",
