@@ -15,13 +15,12 @@ angular.module('letsgo')
         };
 
         $scope.deleteAdmin = function deleteAdmin(admin) {
-            $http.delete('api/admins', admin).finally(function () {
+            $http.delete('api/admins/'+ admin.id).finally(function () {
                 findAllAdmins();
             });
         };
 
         function findAllAdmins() {
-
             $http.get('api/admins')
                 .then(function (data) {
                     $scope.admins = data.data._embedded.adminEntities;
