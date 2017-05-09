@@ -1,4 +1,4 @@
-<div class="form-group" ng-controller="ParentController">
+<div class="form-group" ng-controller="manageEvents">
 	<h3>Its the manageEvents page!</h3>
 	<button class="btn btn-primary" ui-sref="addEvent">Add new event</button>
 	<span style="margin-top: 10px"/>
@@ -7,9 +7,10 @@
 			ng-repeat="event in events">
 			<div class="panel-heading">{{event.name}}</div>
 			<div class="panel-body">
-				<p class="text-warning">{{event.email}}</p>
+				<p class="text-info">Number of tickets {{event.numberOfTickets}}</p><br/>
+				<p class="text-warning">Number of free places {{event.numberOfFreePlaces}}</p>
 				<span class="badge">{{event.status}}</span>
-				<button class="btn btn-info" ui-sref="viewEvent">Details</button>
+				<button class="btn btn-info" ui-sref="viewEvent({id:{{event.id}}})">Details</button>
 				<button class="btn btn-warning" ng-click="changeStatus(event)">Change status</button>
 				<button class="btn btn-danger" ng-click="deleteEvent(event)">Delete</button>
 			</div>

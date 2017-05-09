@@ -48,7 +48,7 @@ angular.module('letsgo').config(['$stateProvider', '$urlRouterProvider', 'USER_R
                 }
             })
             .state('viewEvent', {
-                url: "/viewEvent",
+                url: "/viewEvent?id",
                 templateUrl: "viewEvent.html",
                 data: {
                     authorizedRoles: [USER_ROLES.owner]

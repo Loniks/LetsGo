@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="addEvent">
     <div ng-show="error" class="alert alert-danger">Incorrect registration data</div>
     <form ng-submit="add()">
         <div class="form-group">
@@ -15,7 +15,8 @@
         </div>
         <div class="form-group">
             <label>Start date</label>
-            <input type="datetime" class="form-control" ng-model="startDate"/>
+            <input type="date" ng-model="startDate"  data-date="" data-date-format="yyyy-MM-dd 'T' HH:mm:ss.SSS">
+
         </div>
         <div class="form-group">
             <label>Duration</label>
