@@ -1,6 +1,6 @@
-<div class="form-group">
+<div class="form-group" ng-controller="manageTickets">
     <h3>Its the manageTickets page!</h3>
-    <button class="btn btn-primary" ui-sref="addAdmin">Add new ticket</button>
+    <button class="btn btn-primary" ui-sref="searchEvent">Add new ticket</button>
     <span style="margin-top: 10px"/>
     <ul class="list-group">
         <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
@@ -10,7 +10,7 @@
                 <p class="text-warning">{{ticket.event.description}}</p>
                 <p class="text-warning">{{ticket.event.startDate}}/{{ticket.event.duration}} </p>
                 <span class="badge">{{ticket.status}}</span>
-                <button class="btn btn-info" ng-click="download(ticket)">Download ticket</button>
+                <a class="btn btn-info" target="_blank" ng-href="/api/tickets/download/{{ticket.id}}">Download ticket</a>
                 <button class="btn btn-warning" ng-click="changeStatus(ticket)">Change status</button>
             </div>
         </li>
