@@ -1,6 +1,8 @@
-<div class="form-group">
+<div class="form-group" ng-controller="searchEvent">
     <label for="">Search Event</label>
-    <input type="search" class="form-control">
+    <input type="search" ng-model="eventName" ng-change="findAllEventsByName()" class="form-control"
+           bs-options="event.name for event in events"
+           placeholder="Enter event name" bs-typeahead>
     <span style="margin-top: 10px"/>
     <ul class="list-group">
         <li class="list-group-item col-sm-offset-1 col-sm-10 panel panel-success"
