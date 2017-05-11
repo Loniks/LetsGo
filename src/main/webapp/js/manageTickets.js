@@ -7,6 +7,7 @@ angular.module('letsgo')
         findAllTickets();
 
         $scope.changeStatus = function changeStatus(ticket) {
+                ticket.owner = $rootScope.credentials;
             if (ticket.status == "CANCELED") ticket.status = "NEW";
             else ticket.status = "CANCELED";
             $http.post('api/tickets', ticket).finally(function () {
