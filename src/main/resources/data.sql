@@ -14,7 +14,12 @@ id, email, name, password, phone, status)
 VALUES (1, 'goodVisitor@visitor.com', 'Mike Pitteson', 'goodPass', '03211236547', 'enable');
 INSERT INTO events(
   id, address, description, duration, name, number_of_free_places, number_of_tickets, start_date, status, owner)
-VALUES (1, 'Wow street','Wow description', '5 hours', 'Wow event', 30, 30, '2017-04-17 12:26:44.674', 'enable', 1);
+VALUES (1, 'Wow street','Wow description', '5 hours', 'Wow event', 30, 1, '2017-04-17 12:26:44.674', 'enable', 1);
 INSERT INTO public.tickets(
   id, status, event, owner)
 VALUES (1, 'NEW', 1, 1);
+alter sequence admins_id_seq restart with 2;
+alter sequence sponsors_id_seq restart with 2;
+alter sequence visitors_id_seq restart with 2;
+alter sequence events_id_seq restart with 2;
+alter sequence tickets_id_seq restart with 2;
