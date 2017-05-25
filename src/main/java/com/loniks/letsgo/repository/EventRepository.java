@@ -17,10 +17,10 @@ import java.util.List;
 @RepositoryRestResource(path = "events")
 public interface EventRepository extends JpaRepository<EventEntity, Long> {
 
-    @Query("select e from EventEntity e where e.numberOfTickets <= e.numberOfFreePlaces")
+    @Query("select e from EventEntity e where e.numberOfTickets < e.numberOfFreePlaces")
     List<EventEntity> findByNumberOfTicketsIsLessThanNumberOfFreePlaces();
 
-    @Query("select e from EventEntity e where e.numberOfTickets <= e.numberOfFreePlaces and e.name like %:name%")
+    @Query("select e from EventEntity e where e.numberOfTickets < e.numberOfFreePlaces and e.name like %:name%")
     List<EventEntity> findByNumberOfTicketsIsLessThanNumberOfFreePlacesAndByName(@Param("name") String name);
 
     List<EventEntity> findAllByOwner_Id(@Param("id") Long id);

@@ -15,6 +15,7 @@ angular.module('letsgo').service('Session', function($rootScope, USER_ROLES) {
 	this.destroy = function() {
 		this.user = null;
 		this.userRole = null;
+		$rootScope.credentials = null;
 	};
 	return this;
 });
