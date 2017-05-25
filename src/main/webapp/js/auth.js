@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('letsgo')
-    .factory('Auth', ['$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS','$q',
-        function ($http, $rootScope, $window, Session, AUTH_EVENTS,$q) {
+    .factory('Auth', ['$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS','$q','$state',
+        function ($http, $rootScope, $window, Session, AUTH_EVENTS,$q,$state) {
             var authService = {};
 
             //the login function
@@ -137,6 +137,8 @@ angular.module('letsgo')
 
                 Session.destroy();
                 $window.sessionStorage.removeItem("userInfo");
+                $state.go('guest');
+                //$rootScope.reload();
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
 
             }

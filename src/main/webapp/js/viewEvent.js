@@ -18,6 +18,7 @@ angular.module('letsgo')
         }
 
         $scope.update = function update() {
+            $scope.event.owner = $scope.event._links.owner.href;
             $http.post('api/events', $scope.event).then(function (successResult) {
                 $state.go('manageEvents');
             }, function (errorResult) {
