@@ -14,7 +14,6 @@ angular.module('letsgo')
             .then(function (successResult){
 
                 var loginData = successResult.data;
-                alert(!angular.isUndefined(loginData));
 
                 if (!angular.isUndefined(loginData)) {
                     Auth.login(loginData, function(user) {
