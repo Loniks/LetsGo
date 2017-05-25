@@ -2,7 +2,7 @@
 
 
 angular.module('letsgo')
-    .controller('manageEvents', function ($scope, $http) {
+    .controller('manageEvents', function ($scope, $http, $rootScope) {
         $scope.events = null;
         findAllEvents();
 
@@ -22,7 +22,7 @@ angular.module('letsgo')
 
         function findAllEvents() {
 
-            $http.get('api/events')
+            $http.get('api/events/search/findAllByOwner_Id?id=' + $rootScope.credentials.id)
                 .then(function (data) {
                     $scope.events = data.data._embedded.eventEntities;
                 });
