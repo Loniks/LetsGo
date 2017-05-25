@@ -28,7 +28,7 @@ angular.module('letsgo')
             var updatePromise = $http.post('api/events', event);
             var savePromise = $http.post('api/tickets', {
                 "status": "NEW",
-                "owner": $rootScope.credentials._links.self.href,
+                "owner": $rootScope.credentials,
                 "event": event
             });
 
