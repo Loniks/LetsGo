@@ -81,7 +81,6 @@ public class DownloadTicketControllerTest {
 
     @Configuration
     @EnableWebMvc
-    @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
     static class Config {
 
         @Bean
@@ -99,9 +98,9 @@ public class DownloadTicketControllerTest {
         @Bean
         public TicketRepository ticketRepository() {
             TicketRepository ticketRepository = mock(TicketRepository.class);
-            when(ticketRepository.findOne(eq(1L))).thenReturn(null);
-            when(ticketRepository.findOne(eq(2L))).thenReturn(new TicketEntity());
-            when(ticketRepository.findOne((Long) isNull())).thenReturn(null);
+            when(ticketRepository.getOne(eq(1L))).thenReturn(null);
+            when(ticketRepository.getOne(eq(2L))).thenReturn(new TicketEntity());
+            when(ticketRepository.getOne((Long) isNull())).thenReturn(null);
             return ticketRepository;
         }
     }
