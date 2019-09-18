@@ -27,7 +27,7 @@ public class DownloadTicketController {
     @RequestMapping("/api/tickets/download/{id}")
     public void downloadPDFResource(HttpServletResponse response,
                                     @PathVariable("id") Long id) throws IOException {
-        TicketEntity ticketEntity = ticketRepository.findOne(id);
+        TicketEntity ticketEntity = ticketRepository.getOne(id);
         if(ticketEntity!=null) {
             File ticket = ticketService.makeDocument(ticketEntity);
             response.setContentType("application/msword");
